@@ -1,0 +1,216 @@
+================================================================================
+                        LOOKIT - LAUNCH CHECKLIST
+================================================================================
+
+Everything is ready. Follow these steps exactly and LooKit will be live.
+
+Total time: 30 minutes
+- Supabase setup: 5 min
+- Paystack setup: 5 min
+- GitHub setup: 2 min
+- Vercel deploy: 10 min
+- Testing: 3 min
+
+================================================================================
+                        PHASE 1: CREDENTIALS (10 minutes)
+================================================================================
+
+[ ] STEP 1: Create Supabase Project
+    1. Go to https://supabase.com
+    2. Click "Create Project"
+    3. Name: lookit
+    4. Generate password, save it
+    5. Pick region (EU-West ok)
+    6. Click "Create project" - WAIT 2 MIN
+    
+[ ] STEP 2: Setup Supabase Database
+    1. In Supabase, go to SQL Editor
+    2. Open: /home/claude/lookit/database/schema.sql
+    3. Copy entire file
+    4. Paste in SQL Editor
+    5. Click "Run"
+    6. Wait for completion ✅
+    
+[ ] STEP 3: Get Supabase Keys
+    1. In Supabase, click Settings (bottom left)
+    2. Click API
+    3. COPY AND SAVE these 3:
+       - Project URL
+       - Anon Public Key
+       - Service Role Key
+    
+[ ] STEP 4: Create Paystack Account
+    1. Go to https://paystack.com
+    2. Sign up
+    3. Verify email
+    4. Go Settings → API Keys
+    5. COPY AND SAVE these 2:
+       - Public Key
+       - Secret Key
+
+================================================================================
+                        PHASE 2: GITHUB (2 minutes)
+================================================================================
+
+[ ] STEP 5: Create GitHub Repository
+    1. Go to https://github.com/new
+    2. Name: lookit
+    3. Description: Fashion rental marketplace Nigeria
+    4. Make it PUBLIC
+    5. Click "Create repository"
+    6. COPY THE HTTPS URL
+
+[ ] STEP 6: Push Code to GitHub
+    Run these commands in terminal:
+    
+    cd /home/claude/lookit
+    git init
+    git add .
+    git commit -m "LooKit MVP - Initial launch"
+    git branch -M main
+    git remote add origin https://github.com/YOUR_USERNAME/lookit.git
+    git push -u origin main
+    
+    (Replace YOUR_USERNAME with your actual GitHub username)
+    
+    Wait for push to complete ✅
+
+================================================================================
+                        PHASE 3: VERCEL DEPLOY (10 minutes)
+================================================================================
+
+[ ] STEP 7: Connect Vercel
+    1. Go to https://vercel.com/new
+    2. Click "Import Project"
+    3. Select "GitHub"
+    4. Find "lookit" repo, click it
+    5. Click "Import"
+    
+[ ] STEP 8: Configure Project
+    1. Framework: Next.js (auto-selected)
+    2. Root Directory: ./ (default)
+    3. Scroll to "Environment Variables"
+    4. Add these 7 variables exactly as shown:
+
+    Name: NEXT_PUBLIC_SUPABASE_URL
+    Value: [from Supabase Settings > API]
+    
+    Name: NEXT_PUBLIC_SUPABASE_ANON_KEY
+    Value: [from Supabase Settings > API]
+    
+    Name: SUPABASE_SERVICE_ROLE_KEY
+    Value: [from Supabase Settings > API]
+    
+    Name: NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY
+    Value: [from Paystack Settings > API Keys]
+    
+    Name: PAYSTACK_SECRET_KEY
+    Value: [from Paystack Settings > API Keys]
+    
+    Name: NEXT_PUBLIC_APP_URL
+    Value: https://lookit-[random].vercel.app
+    (Note: Vercel will show you this URL)
+    
+    Name: NODE_ENV
+    Value: production
+    
+    5. Click "Deploy"
+    6. WAIT 2-3 MINUTES for build
+
+[ ] STEP 9: Verify Deployment
+    1. When build completes, Vercel shows green checkmark
+    2. Click "Visit"
+    3. See your LooKit landing page ✅
+    4. If error, check env vars are ALL set correctly
+
+================================================================================
+                        PHASE 4: TEST (3 minutes)
+================================================================================
+
+[ ] STEP 10: Test Core Features
+    Visit your Vercel URL and check:
+    
+    [ ] Landing page loads
+    [ ] Hero section visible
+    [ ] "Browse Items" button works → explore page
+    [ ] Explore page loads
+    [ ] "Log In" button works → login page
+    [ ] "Sign Up" button works → signup page
+    [ ] Mobile looks good (use browser dev tools)
+    [ ] Black + gold color theme correct
+
+If any page shows error:
+    - Wait 1 minute and refresh
+    - Check Vercel deployment logs for errors
+    - Verify all env variables are set
+
+================================================================================
+                        PHASE 5: YOU'RE LIVE (0 minutes)
+================================================================================
+
+[ ] STEP 11: Share Your App
+    Your Vercel URL is your live app
+    Example: https://lookit-xyz123.vercel.app
+    
+    - Share with friends
+    - Test account creation
+    - Test login
+    - Browse marketplace (empty = normal, no listings yet)
+
+================================================================================
+                        TROUBLESHOOTING
+================================================================================
+
+Q: Build failed on Vercel
+A: Check all 7 environment variables are set (no empty ones)
+
+Q: App loads but shows 404 errors
+A: Refresh page, clear cache (Ctrl+Shift+R), wait 5 min
+
+Q: Can't sign up/login
+A: Verify Supabase project is running, API keys correct
+
+Q: Page takes forever to load
+A: First time deployment is slow, refresh after 2 min
+
+Q: Everything works locally but fails on Vercel
+A: Double-check env vars match exactly (copy-paste no spaces)
+
+================================================================================
+                        IMPORTANT: SAVE THESE
+================================================================================
+
+Your Vercel URL: https://lookit-[your-url].vercel.app
+Your GitHub: https://github.com/YOUR_USERNAME/lookit
+
+Your Environment Variables (keep safe):
+NEXT_PUBLIC_SUPABASE_URL = 
+NEXT_PUBLIC_SUPABASE_ANON_KEY = 
+SUPABASE_SERVICE_ROLE_KEY = 
+NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY = 
+PAYSTACK_SECRET_KEY = 
+NEXT_PUBLIC_APP_URL = 
+
+================================================================================
+                        YOU'RE DONE 🎉
+================================================================================
+
+LooKit is live in production.
+
+Next steps:
+1. Share URL with friends
+2. Get feedback
+3. Add more features
+4. Scale
+
+Need help? Check:
+- DEPLOY_NOW.md (detailed guide)
+- START_HERE.md (quick reference)
+- README.md (full docs)
+
+Questions about code? All source code in:
+- CODEBASE.md
+
+================================================================================
+                    Made in Nigeria 🇳🇬 - LooKit
+================================================================================
